@@ -7,33 +7,33 @@
 - [How to download and set up.](#How-to-download-and-set-up)
 
 ## What this bot can be used for.
-Данный бот был сделан для быстрого отслеживания поставок заказчиками компании Гофромашины Премиум. В компании активно использовались уникальные ID, по которым отдел поставок в том числе отслеживал статус заказа. Для сокращения времени ответа, а также для возможности отследить заказ 24/7 была добавлена возможность делать это автоматически при помощи бота. Бот заходит в таблицу, берет статус заказа, который соответствует ID и возвращает его в ответе. Информация о запросе фиксируется в Google Sheets, что позволяет отслеживать сколько было запросов, по каким заказам итп.
+This bot was made to allow fast tracking of the orders for the customers of Gofromachines Premium. The company uses unique IDs to track all shipments, the tracking is done by supply chain department. To reduce the response time as well as to allow 24/7 monitoring this bot automation was added. The bot opens the file, checks the order status that matches the ID and returns it in response. The information about the inquiry is stored in Google Sheets, which allows to see how many inquries there were, regarding which orders, etc.
 
-При схожих запросах бота легко адаптировать, при необходимости можно расширять его функционал.
+The bot can be easily adjusted for simiar use cases, furthremore it can be scaled based on specific needs.
 
 ## How to use the version of the bot that is already running.
-В данный момент бот запущен и любой может протестировать его в телеграме: @Gmach_helpdesk_bot. Также можно зайти [по QR-коду с сайта ООО Гофромашины Премиум ](http://g-mach.ru/servisy-dlya-klientov).
-При заходе в бота есть меню, в котором 2 кнопки:
-- /start (отвечает за запуск бота)
-- /help (содержит краткое описание возможностей бота)
+At the moment the bot is running and anyone can test it in Telegram: @Gmach_helpdesk_bot. It is also possible to [use QR code at Gofromachines website](http://g-mach.ru/servisy-dlya-klientov).
+When the bot is started there are 2 options to choose from:
+- /start (starts the bot)
+- /help (provides an overview of what this bot can do)
 
-Любой может протестировать бота, следуя пошаговым инструкциям и нажимая на inline клавиатуру.
-Для реализации запросов бот будет запрашивать ID поставок ЗЧ (запасных частей) либо ID рекламаций. Ниже несколько примеров ID, которые вернут разные статусы.
-### Рабочие примеры ID рекламаций:
+Anyone can test the bot following step-by-step instructions and using inline keyboard.
+In order to provide infomration the bot will need order IDs (for either shipments or warranty supplies), examples of which are provided below. Please keep in mind that the bot currently uses only the Russian language as that is the primary language of communication for Gofromachines customers.
+### Warranty IDs to test the bot:
  - Em0042205002S2104
-   Данный id не является ID рекламации, поэтому бот вернет сообщение об ошибке.
+   This is not actually a warranty ID so the bot will return the error message.
  - Qu079220223W0C
-   Бот вернет статус: Ожидается ответ производителя по рекламации
+   The bot will return the following status: Ожидается ответ производителя по рекламации
  - Em003280922W1C
-   Бот вернет статус: Груз доставлен заказчику 01.02.2023
+  The bot will return the following status: Груз доставлен заказчику 01.02.2023
 Чтобы проверить несколько рекламаций можно после получения статуса о рекламации вводить следующий интересующий ID.
-### Рабочие примеры ID поставок:
+### Order IDs to test the bot:
  - Em0042205002S2104
-   Бот вернет статус: Груз предеан заказчику.
+  The bot will return the following status: Груз предеан заказчику.
  - Em003280922W1C
-   Данный id не является ID поставки, поэтому бот вернет сообщение об ошибке.
+    This is not actually an order ID so the bot will return the error message.
  - RO0772202302S2102
-   Бот вернет статус: Груз на складе поставщика. Ожидание оплаты.
+   The bot will return the following status: Груз на складе поставщика. Ожидание оплаты.
    
 Для того, чтобы с ID рекламаций перейти в ID поставок необходимо перезапустить бота командой /start
 
