@@ -61,4 +61,12 @@ Python, Pandas, Gspread.
 2. Клонируйте форкнутый репозиторий.
 3. Установите зависимости из requirements.txt Команда:
    ```pip install -r requirements. txt```
-4. a
+4. Создайте .env файл в папке, где находится проект, в него добавьте следующие переменные (ниже указан пример с вымышленными данными):
+   ```
+   API_KEY=
+   bot_username=
+   bot_name=
+   Google_sheets_API_details=
+   FEEDS=
+   DRIVE=
+   ```
