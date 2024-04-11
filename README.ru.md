@@ -94,9 +94,10 @@ Python, Pandas, Gspread.
    3. Включите google sheets API, для этого вверху страницы справа от лого GoogleCloud выберите имя вашего проекта. Далее в колонке слева выберите API, если его нет, внизу нажмите на MORE PRODUCTS, и далее зайдите в APIs & Services, перейдите в Enabled APIs & Services.
       На открывшейся странице вверху нажимите + ENABLE APIS AND SERVICES.
       Далее у вас откроется список APIs and Services, вы в нем ищете Google Sheets API и кликаете на него, после чего в открывшемся окне нажимаете ENABLE.
-   4. Под APIs & Services зайдите в OAuth consent screen, выберите User Type External и нажмите CREATE.
-      Введите имя в графе App name и имейл (например, ваш имейл, к которому у вас есть доступ) в графу user support email, этот же имейл можно указать в графе Developer contact information, для этого страницу нужно чуть прокрутить вниз, после кликните SAVE AND CONTINUE.
-      На открывшейся странице выберите ADD OR REMOVE SCOPES. В фильтре введите sheets.
+   4. Под APIs & Services в Google Sheets API выберите CREATE CREDENTIALS, в открывшемся окне выберите Google Sheets API и Application Data и нажмите NEXT.
+      В открывшемся окне напишите Service account name (любое имя в одно слово) и нажмите CREATE AND CONTINUE.
+      Выберите роль - Editor, нажмите CONTINUE и далее нажмите DONE.
+   5. Теперь вам необходимо будет загрузить credentials, для этого перейдите в CREDENTIALS вкладку все в том же Google Sheets API, кликните на service account, что вы только что создали. В открывшемся окне нажмите на вкладку KEYS. В ней нажмите ADD KEY, create a new key. Key type   выберите JSON и нажмите CREATE. Файл загрузится на ваш компьютер, перенесите его в ту же папку, где находится ваш проект.
 
 9. Создайте файл sensitive.py, в котором укажите адреса файлов с таблицами. Вы также можете не создавать отдельный файл, проект я делал давно и на Windows, поэтому оставил именно эту логику.
    Если хотите вносить минимум изменений, мой файл выглядел так:
