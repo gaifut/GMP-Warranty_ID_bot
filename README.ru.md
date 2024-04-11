@@ -2,7 +2,7 @@
 
 ## Оглавление:
 - [Информация по использованию работающей версии бота.](#Информация-по-использованию-работающей-версии-бота)
-- [Реализация](#Реализация)
+- [Реализация](#Описание-проекта)
 - [Как скачать и запустить](#Как-скачать-и-запустить)
 
 ## Информация по использованию работающей версии бота.
@@ -31,8 +31,15 @@
    
 Для того, чтобы с ID рекламаций перейти в ID поставок необходимо перезапустить бота командой /start
 
-## Реализация.
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+## Описание Проекта.
+### Стек:
+Python, Pandas, Gspread.
+### Процесс работы программы.
+При получении вводных данных от пользователя (id поставки или рекламации) бот делает следующее:
+1. Заходит в соответствующую Excel таблицу на прописанную вкладку (зависит от того, что запросили) и находит в столбце статус значение, которое соответствует запрошенному id. Выглядит это примерно так:
+   ![image](https://github.com/gaifut/GMP-Warranty_ID_bot/assets/113767276/5f748614-1838-42ed-b3ce-5d069d7696a2)
+
+2. 
 
 ## Как скачать и запустить.
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
