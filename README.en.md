@@ -35,26 +35,26 @@ In order to provide infomration the bot will need order IDs (for either shipment
  - RO0772202302S2102
    The bot will return the following status: Груз на складе поставщика. Ожидание оплаты.
    
-Для того, чтобы с ID рекламаций перейти в ID поставок необходимо перезапустить бота командой /start
+To switch from order ID statuses to warranty IDs use /start command.
 
 ## Project Description.
-### Стек:
+### Stack:
 Python, Pandas, Gspread.
-### Процесс работы программы.
-При получении вводных данных от пользователя (id поставки или рекламации) бот делает следующее:
-1. Заходит в соответствующую Excel таблицу на прописанную вкладку (зависит от того, что запросили) и находит в столбце статус значение, которое соответствует запрошенному id. Выглядит это примерно так:
+### Step by step program logic.
+When received input from the user (either order ID or warranty ID) the bot does the following:
+1. Opens a relevant Excel table moves to a designated tab (depending on the inquiry) and finds the value in the status column that matches the ID in question. It looks like this:
    ![Screenshot from 2024-04-11 15-09-46](https://github.com/gaifut/GMP-Warranty_ID_bot/assets/113767276/636d4a85-a217-46cc-90a3-608edfc2deb9)
-Это происходит "под капотом" при помощи библиотеки pandas.
-2. Если бот нашел id, то он выводит его статус пользователю, если бот не нашел id, он выводит соответствующее сообщение.
-3. Бот подключается к указанному Google Sheets при помощи API гугла (библиотека gspread) и фиксирует там:
-   - id user'а, сделавшего запрос
-   - ID поставки или рекламации, которое юзер ввел при запросе
-   - время запроса (компьютерное, Гринвич, Москва)
-   - номер запроса (считается для каждого пользователя в течение 1 сесссии).
-   Выглядит это так:
+This happens 'under the hood' using pandas library.
+2. If the bot finds the ID, it returns its status to the user, otherwise it returns a message stating as much.
+3. The bot connects to the specified Google Sheets using the Google API (gspread library) and records there:
+    - id of the user who made the request
+    - Order or warranty ID that the user entered
+    - request time (computer time, Greenwich, Moscow)
+    - request number (counted for each user during 1 session).
+   It looks like this:
    ![image](https://github.com/gaifut/GMP-Warranty_ID_bot/assets/113767276/f4000d2b-4894-4da6-9fb1-2050f47fc799)
-### Примечания:
-- Максимальное количество запросов за 1 сессию = 25, при превышении лимита бот попросит перезапустить его.
+### Note:
+- The maximum number of requests per session = 25; if the limit is exceeded, the bot will ask you to restart it.
 
 ## How to download and set up.
 #### Важно! Проект делался на Windows, возможны проблемы при запуске на других операционных системах.
