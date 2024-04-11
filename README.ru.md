@@ -63,10 +63,19 @@ Python, Pandas, Gspread.
    ```pip install -r requirements. txt```
 4. Создайте .env файл в папке, где находится проект, в него добавьте следующие переменные (ниже указан пример с вымышленными данными):
    ```
-   API_KEY=
-   bot_username=
-   bot_name=
-   Google_sheets_API_details=
-   FEEDS=
-   DRIVE=
+   API_KEY=123123123:SFDSsdsfgfOYSADBasdas123asdasdAGw
+   bot_username=dummy_name_bot
+   bot_name=dummy_name_bot
+   Google_sheets_API_details=test-name-placeholder.json
+   FEEDS=https://spreadsheets.google.com/feeds
+   DRIVE=https://www.googleapis.com/auth/drive
+   ```
+   Если вы не хотите использовать какую-то функциональность, например Google API, то можно просто убрать код, отвечающий за это.
+5. Создайте файл sensitive.py, в котором укажите адреса файлов с таблицами. Вы также можете не создавать отдельный файл, проект я делал давно и на Windows, поэтому оставил именно эту логику.
+   Если хотите вносить минимум изменений, мой файл выглядел так:
+   ```
+   # sensitive.py
+   # location paths
+   excel_file_location_W = `указывается адрес таблицы для рекламаций`
+   excel_file_location_S = `указывается адрес таблицы для обычных поставок`
    ```
