@@ -38,9 +38,17 @@ Python, Pandas, Gspread.
 При получении вводных данных от пользователя (id поставки или рекламации) бот делает следующее:
 1. Заходит в соответствующую Excel таблицу на прописанную вкладку (зависит от того, что запросили) и находит в столбце статус значение, которое соответствует запрошенному id. Выглядит это примерно так:
    ![Screenshot from 2024-04-11 15-09-46](https://github.com/gaifut/GMP-Warranty_ID_bot/assets/113767276/636d4a85-a217-46cc-90a3-608edfc2deb9)
-
-
-2. 
+Это происходит "под капотом" при помощи библиотеки pandas.
+2. Если бот нашел id, то он выводит его статус пользователю, если бот не нашел id, он выводит соответствующее сообщение.
+3. Бот подключается к указанному Google Sheets при помощи API гугла (библиотека gspread) и фиксирует там:
+   - id user'а, сделавшего запрос
+   - ID поставки или рекламации, которое юзер ввел при запросе
+   - время запроса (компьютерное, Гринвич, Москва)
+   - номер запроса (считается для каждого пользователя в течение 1 сесссии).
+   Выглядит это так:
+   ![image](https://github.com/gaifut/GMP-Warranty_ID_bot/assets/113767276/f4000d2b-4894-4da6-9fb1-2050f47fc799)
+### Примечания:
+- Максимальное количество запросов за 1 сессию = 25, при превышении лимита бот попросит перезапустить его.
 
 ## Как скачать и запустить.
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
