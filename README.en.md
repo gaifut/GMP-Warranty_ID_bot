@@ -68,9 +68,9 @@ This happens 'under the hood' using pandas library.
     - Enter this command: ```set-executionpolicy remotesigned```
     - Confirm it with Y or Yes once asked to.
     - After this venv activation should start working.
-5. Install dependencies from requirements.txt
+4. Install dependencies from requirements.txt
    ```pip install -r requirements. txt```
-7. Create .env file in the same folder where the project is located add the following variables to the file (use real data instead of sample data that is provided below after = sign):
+5. Create .env file in the same folder where the project is located add the following variables to the file (use real data instead of sample data that is provided below after = sign):
    ```
    API_KEY=123123123:SFDSsdsfgfOYSADBasdas123asdasdAGw
    bot_username=dummy_name_bot
@@ -97,7 +97,7 @@ This happens 'under the hood' using pandas library.
       Choose a role - Editor, click CONTINUE and then click DONE.
    5. Now you will need to download credentials, to do this, go to the CREDENTIALS tab in the same Google Sheets API, click on the service account that you just created. In the window that opens, click on the KEYS tab. In it, click ADD KEY, create a new key. For key type select JSON and click CREATE. The file will download to your computer, move it to the same folder where your project is located. Specify the file name in the Google_sheets_API_details variable in your .env file.
    6. Copy the email of your service account (see point 5), go to the Google Sheet that you plan to use to upload data (for this, you can create a new sheet in your regular Google account) and click share. In the window that opens, paste the copied address, make sure that the access level is set to Editor and click Send.
-9. Create a file sensitive.py, in which specify the addresses of files with tables. You don’t have to create a separate file; I did the project a long time ago on Windows, so I decided to keep the original logic.
+6. Create a file sensitive.py, in which specify the addresses of files with tables. You don’t have to create a separate file; I did the project a long time ago on Windows, so I decided to keep the original logic.
    If you do not want to change the existing logic you can simply follow my structure as in example below:
    ```
    # sensitive.py
@@ -105,8 +105,8 @@ This happens 'under the hood' using pandas library.
    excel_file_location_W = `the path for warranty shipments table is stated here`
    excel_file_location_S = 'the path for normal shipments table is stated here`
    ```
-10. Add changes to definitions.py file:
+7. Add changes to definitions.py file:
     
    You need to at least override the file and tab names (below line 25 #GENERAL). Depending on the goals of the project, you can also change the name of the buttons and other variables.
 
-11. Run the project from the GMP_W_B_main 1.3.py file (in VSCode, the run hotkey is F5). After this, your telegram bot should start working.
+8. Run the project from the GMP_W_B_main 1.3.py file (in VSCode, the run hotkey is F5). After this, your telegram bot should start working.
