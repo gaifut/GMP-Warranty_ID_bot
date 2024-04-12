@@ -58,19 +58,19 @@ This happens 'under the hood' using pandas library.
 
 ## How to download and set up.
 #### Важно! Проект делался на Windows, возможны проблемы при запуске на других операционных системах.
-1. Fork'ните этот репозиторий.
-2. Клонируйте форкнутый репозиторий.
-3. Советую установить виртуальное окружение, например так: ```python -m venv venv```
-   и далее активируйте его: ```. venv/Scripts/activate``` (для линукса это ```. venv/bin/activate```, но данный проект реализован на Windows)
-   для деактивации можно набрать ```deactivate```
-   Вероятно, Windows выдаст вам ошибку про Scripts, для ее устранения:
-    - Зайдите в PowerShell как администратор (наберите powershell в пуск).
-    - Наберите ```set-executionpolicy remotesigned```
-    - Вас попросят подтвердить это, укажите Y или Yes.
-    - После этого активащия виртуального окружения должна заработать.
-5. Установите зависимости из requirements.txt
+1. Fork this repository.
+2. Clone forked repository.
+3. I recommend to install virtual inviroment, it can be done via this command for instance: ```python -m venv venv```
+   then you need to activate it with: ```. venv/Scripts/activate``` (for Linux it is ```. venv/bin/activate```, but this project was created on Windows OS)
+   to deactivate virtual environment use this command: ```deactivate```.
+   It is possible that Windows will give you Scripts error, to fix it:
+    - Run PowerShell as administrator (type powershell in the start menu to find it).
+    - Enter this command: ```set-executionpolicy remotesigned```
+    - Confirm it with Y or Yes once asked to.
+    - After this venv activation should start working.
+5. Install dependencies from requirements.txt
    ```pip install -r requirements. txt```
-7. Создайте .env файл в папке, где находится проект, в него добавьте следующие переменные (ниже указан пример с вымышленными данными):
+7. Create .env file in the same folder where the project is located add the following variables to the file (use real data instead of sample data that is provided below after = sign):
    ```
    API_KEY=123123123:SFDSsdsfgfOYSADBasdas123asdasdAGw
    bot_username=dummy_name_bot
@@ -79,33 +79,34 @@ This happens 'under the hood' using pandas library.
    FEEDS=https://spreadsheets.google.com/feeds
    DRIVE=https://www.googleapis.com/auth/drive
    ```
-   Если вы не хотите использовать какую-то функциональность, например Google API, то можно просто убрать код, отвечающий за это.
+   If you do not want to use some functionality, for example the Google API, then you can simply remove the code responsible for it.
 
-   #### Как зарегистрировать нового бота в Telegram:
-   1. Зайдите в приложение телеграм и в поиске аккаунтов наберите @BotFather.
-   2. Внизу кликните на меню и выберите Create a new bot либо просто наберите /newbot
-   3. Напишите имя для вашего бота (может быть любым).
-   4. Напишите имя пользователя для вашего бота, обязательно должно оканчиваться на bot, например: ui_bot, salesbot.
-      После этого BotFather выдаст вам всю информацию о вашем боте, в том числе API токен (как в примере в пункте 7).
-   #### Как установить API соединение с Google Sheets.
-   1. Зайдите на ссылку https://console.cloud.google.com/projectcreate
-   2. В Project name укажите имя вашего проекта и после нажмите кнопку CREATE.
-   3. Включите google sheets API, для этого вверху страницы справа от лого GoogleCloud выберите имя вашего проекта. Далее в колонке слева выберите API, если его нет, внизу нажмите на MORE PRODUCTS, и далее зайдите в APIs & Services, перейдите в Enabled APIs & Services.
-      На открывшейся странице вверху нажимите + ENABLE APIS AND SERVICES.
-      Далее у вас откроется список APIs and Services, вы в нем ищете Google Sheets API и кликаете на него, после чего в открывшемся окне нажимаете ENABLE.
-   4. Под APIs & Services в Google Sheets API выберите CREATE CREDENTIALS, в открывшемся окне выберите Google Sheets API и Application Data и нажмите NEXT.
-      В открывшемся окне напишите Service account name (любое имя в одно слово) и нажмите CREATE AND CONTINUE.
-      Выберите роль - Editor, нажмите CONTINUE и далее нажмите DONE.
-   5. Теперь вам необходимо будет загрузить credentials, для этого перейдите в CREDENTIALS вкладку все в том же Google Sheets API, кликните на service account, что вы только что создали. В открывшемся окне нажмите на вкладку KEYS. В ней нажмите ADD KEY, create a new key. Key type   выберите JSON и нажмите CREATE. Файл загрузится на ваш компьютер, перенесите его в ту же папку, где находится ваш проект. Название файла укажите в переменной Google_sheets_API_details в вашем .env файле.
-   6. Скопируйте email вашего service account (смотрите пункт 5), зайдите в Google Sheet, который вы планируете использовать для выгрузки данных (для этого в своем обычном гугл аккаунте можно создать новый sheet) и нажмите поделиться (share). В открывшемся окне вставьте скопированный адрес, убедитесь, что уровень доступа указан Editor и нажмите Send.
-9. Создайте файл sensitive.py, в котором укажите адреса файлов с таблицами. Вы также можете не создавать отдельный файл, проект я делал давно и на Windows, поэтому оставил именно эту логику.
-   Если хотите вносить минимум изменений, мой файл выглядел так:
+   #### How to register new bot in Telegram:
+    1. Go to the telegram application and type @BotFather in the search box.
+    2. Click on the menu at the bottom and select Create a new bot or just type /newbot
+    3. Write a name for your bot (can be anything).
+    4. Write the username for your bot, it must end in bot, for example: ui_bot, salesbot.
+       After this, BotFather will give you all the information about your bot, including the API token (as in the example in step 7).
+   #### How to establish API connection with Google Sheets.
+   1. Go to the link https://console.cloud.google.com/projectcreate
+   2. Enter the name of your project to the Project name box and click CREATE.
+   3. Enable Google Sheets API by selecting the name of your project at the top of the page to the right of the GoogleCloud logo.
+      Next, in the left column, select API, if it is not there, click on MORE PRODUCTS at the bottom, and then go to APIs & Services -> Enabled APIs & Services.
+   4. Under APIs & Services in Google Sheets API select CREATE CREDENTIALS, choose Google Sheets API -> Application Data in the opened window and click NEXT.
+      Write Service account name (any name as a single word) and click CREATE AND CONTINUE.
+      Choose a role - Editor, click CONTINUE and then click DONE.
+   5. Now you will need to download credentials, to do this, go to the CREDENTIALS tab in the same Google Sheets API, click on the service account that you just created. In the window that opens, click on the KEYS tab. In it, click ADD KEY, create a new key. For key type select JSON and click CREATE. The file will download to your computer, move it to the same folder where your project is located. Specify the file name in the Google_sheets_API_details variable in your .env file.
+   6. Copy the email of your service account (see point 5), go to the Google Sheet that you plan to use to upload data (for this, you can create a new sheet in your regular Google account) and click share. In the window that opens, paste the copied address, make sure that the access level is set to Editor and click Send.
+9. Create a file sensitive.py, in which specify the addresses of files with tables. You don’t have to create a separate file; I did the project a long time ago on Windows, so I decided to keep the original logic.
+   If you do not want to change the existing logic you can simply follow my structure as in example below:
    ```
    # sensitive.py
    # location paths
-   excel_file_location_W = `указывается адрес таблицы для рекламаций`
-   excel_file_location_S = `указывается адрес таблицы для обычных поставок`
+   excel_file_location_W = `the path for warranty shipments table is stated here`
+   excel_file_location_S = 'the path for normal shipments table is stated here`
    ```
-10. Внесите изменения в файл definitions.py:
+10. Add changes to definitions.py file:
+    
+   You need to at least override the file and tab names (below line 25 #GENERAL). Depending on the goals of the project, you can also change the name of the buttons and other variables.
 
-   Как минимум вам необходимо переопредилить названия файлов и вкладок (ниже строки 25 #GENERAL). В зависимости от целей проекта вы также можете изменить здесь название кнопок и прочие переменные.
+11. Run the project from the GMP_W_B_main 1.3.py file (in VSCode, the run hotkey is F5). After this, your telegram bot should start working.
