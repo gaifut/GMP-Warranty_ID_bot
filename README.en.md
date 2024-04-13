@@ -1,10 +1,24 @@
 [return to main Readme file](https://github.com/gaifut/GMP-Warranty_ID_bot/blob/main/README.md).
 
 ## Table of contents:
+- [Technology stack.](#Technology-stack)
 - [What this bot can be used for.](#What-this-bot-can-be-used-for)
 - [How to use the version of the bot that is already running.](#How-to-use-the-version-of-the-bot-that-is-already-running)
+  - [Warranty IDs to test the bot.](#Warranty-IDs-to-test-the-bot)
+  - [Order IDs to test the bot.](#Order-IDs-to-test-the-bot)
 - [Project Description.](#Project-Description)
+  - [Step by step program logic.](#Step-by-step-program-logic)
+  - [Note.](#Note)
 - [How to download and set up.](#How-to-download-and-set-up)
+  - [How to register new bot in Telegram.](#How-to-register-new-bot-in-Telegram)
+  - [How to establish API connection with Google Sheets.](#How-to-establish-API-connection-with-Google-Sheets)
+
+## Technology stack:
+- Python
+- Pandas
+- Gspread (Python API for Google Sheets)
+- Windows 10 (operating system on which the project was created)
+- Aiogram
 
 ## What this bot can be used for.
 This bot was made to allow fast tracking of the orders for the customers of Gofromachines Premium. The company uses unique IDs to track all shipments, the tracking is done by supply chain department. To reduce the response time as well as to allow 24/7 monitoring this bot automation was added. The bot opens the file, checks the order status that matches the ID and returns it in response. The information about the inquiry is stored in Google Sheets, which allows to see how many inquries there were, regarding which orders, etc.
@@ -38,8 +52,6 @@ In order to provide infomration the bot will need order IDs (for either shipment
 To switch from order ID statuses to warranty IDs use /start command.
 
 ## Project Description.
-### Stack:
-Python, Pandas, Gspread.
 ### Step by step program logic.
 When received input from the user (either order ID or warranty ID) the bot does the following:
 1. Opens a relevant Excel table moves to a designated tab (depending on the inquiry) and finds the value in the status column that matches the ID in question. It looks like this:
@@ -57,7 +69,7 @@ This happens 'under the hood' using pandas library.
 - The maximum number of requests per session = 25; if the limit is exceeded, the bot will ask you to restart it.
 
 ## How to download and set up.
-#### Важно! Проект делался на Windows, возможны проблемы при запуске на других операционных системах.
+### Keep in mind that the project was created on Windows OS originally, if you run it on other systems some compatibility issues may arise.
 1. Fork this repository.
 2. Clone forked repository.
 3. I recommend to install virtual inviroment, it can be done via this command for instance: ```python -m venv venv```
@@ -80,6 +92,19 @@ This happens 'under the hood' using pandas library.
    DRIVE=https://www.googleapis.com/auth/drive
    ```
    If you do not want to use some functionality, for example the Google API, then you can simply remove the code responsible for it.
+6. Create a file sensitive.py, in which specify the addresses of files with tables. You don’t have to create a separate file; I did the project a long time ago on Windows, so I decided to keep the original logic.
+   If you do not want to change the existing logic you can simply follow my structure as in example below:
+   ```
+   # sensitive.py
+   # location paths
+   excel_file_location_W = `the path for warranty shipments table is stated here`
+   excel_file_location_S = 'the path for normal shipments table is stated here`
+   ```
+7. Add changes to definitions.py file:
+    
+   You need to at least override the file and tab names (below line 25 #GENERAL). Depending on the goals of the project, you can also change the name of the buttons and other variables.
+
+8. Run the project from the GMP_W_B_main 1.3.py file (in VSCode, the run hotkey is F5). After this, your telegram bot should start working.
 
    #### How to register new bot in Telegram:
     1. Go to the telegram application and type @BotFather in the search box.
@@ -97,16 +122,3 @@ This happens 'under the hood' using pandas library.
       Choose a role - Editor, click CONTINUE and then click DONE.
    5. Now you will need to download credentials, to do this, go to the CREDENTIALS tab in the same Google Sheets API, click on the service account that you just created. In the window that opens, click on the KEYS tab. In it, click ADD KEY, create a new key. For key type select JSON and click CREATE. The file will download to your computer, move it to the same folder where your project is located. Specify the file name in the Google_sheets_API_details variable in your .env file.
    6. Copy the email of your service account (see point 5), go to the Google Sheet that you plan to use to upload data (for this, you can create a new sheet in your regular Google account) and click share. In the window that opens, paste the copied address, make sure that the access level is set to Editor and click Send.
-6. Create a file sensitive.py, in which specify the addresses of files with tables. You don’t have to create a separate file; I did the project a long time ago on Windows, so I decided to keep the original logic.
-   If you do not want to change the existing logic you can simply follow my structure as in example below:
-   ```
-   # sensitive.py
-   # location paths
-   excel_file_location_W = `the path for warranty shipments table is stated here`
-   excel_file_location_S = 'the path for normal shipments table is stated here`
-   ```
-7. Add changes to definitions.py file:
-    
-   You need to at least override the file and tab names (below line 25 #GENERAL). Depending on the goals of the project, you can also change the name of the buttons and other variables.
-
-8. Run the project from the GMP_W_B_main 1.3.py file (in VSCode, the run hotkey is F5). After this, your telegram bot should start working.
