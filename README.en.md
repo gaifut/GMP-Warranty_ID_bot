@@ -70,9 +70,8 @@ This happens 'under the hood' using pandas library.
 
 ## How to download and set up.
 ### Keep in mind that the project was created on Windows OS originally, if you run it on other systems some compatibility issues may arise.
-1. Fork this repository.
-2. Clone forked repository.
-3. I recommend to install virtual inviroment, it can be done via this command for instance: ```python -m venv venv```
+1. Clone this repository. ```git clone git@github.com:gaifut/GMP-Warranty_ID_bot.git```
+2. I recommend to install virtual inviroment, it can be done via this command for instance: ```python -m venv venv```
    then you need to activate it with: ```. venv/Scripts/activate``` (for Linux it is ```. venv/bin/activate```, but this project was created on Windows OS)
    to deactivate virtual environment use this command: ```deactivate```.
    It is possible that Windows will give you Scripts error, to fix it:
@@ -80,9 +79,9 @@ This happens 'under the hood' using pandas library.
     - Enter this command: ```set-executionpolicy remotesigned```
     - Confirm it with Y or Yes once asked to.
     - After this venv activation should start working.
-4. Install dependencies from requirements.txt
+3. Install dependencies from requirements.txt
    ```pip install -r requirements. txt```
-5. Create .env file in the same folder where the project is located add the following variables to the file (use real data instead of sample data that is provided below after = sign):
+4. Create .env file in the same folder where the project is located add the following variables to the file (use real data instead of sample data that is provided below after = sign):
    ```
    API_KEY=123123123:SFDSsdsfgfOYSADBasdas123asdasdAGw
    bot_username=dummy_name_bot
@@ -92,7 +91,7 @@ This happens 'under the hood' using pandas library.
    DRIVE=https://www.googleapis.com/auth/drive
    ```
    If you do not want to use some functionality, for example the Google API, then you can simply remove the code responsible for it.
-6. Create a file sensitive.py, in which specify the addresses of files with tables. You don’t have to create a separate file; I did the project a long time ago on Windows, so I decided to keep the original logic.
+5. Create a file sensitive.py, in which specify the addresses of files with tables. You don’t have to create a separate file; I did the project a long time ago on Windows, so I decided to keep the original logic.
    If you do not want to change the existing logic you can simply follow my structure as in example below:
    ```
    # sensitive.py
@@ -100,11 +99,11 @@ This happens 'under the hood' using pandas library.
    excel_file_location_W = `the path for warranty shipments table is stated here`
    excel_file_location_S = 'the path for normal shipments table is stated here`
    ```
-7. Add changes to definitions.py file:
+6. Add changes to definitions.py file:
     
    You need to at least override the file and tab names (below line 25 #GENERAL). Depending on the goals of the project, you can also change the name of the buttons and other variables.
 
-8. Run the project from the GMP_W_B_main 1.3.py file (in VSCode, the run hotkey is F5). After this, your telegram bot should start working.
+7. Run the project from the GMP_W_B_main 1.3.py file (in VSCode, the run hotkey is F5). After this, your telegram bot should start working.
 
    #### How to register new bot in Telegram:
     1. Go to the telegram application and type @BotFather in the search box.
